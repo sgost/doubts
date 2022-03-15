@@ -1,5 +1,4 @@
 import styled from "styled-components"
-import * as palette from "../../styles/variables"
 
 export const LoginContainer = styled.div`
 background: #363740;
@@ -59,6 +58,14 @@ border-radius: 8px;
 margin: 48px 0 0 0;
 cursor: pointer;
 transition: 0.5s ease-in-out;
+display: flex;
+align-items: center;
+justify-content: center;
+}
+#LoginContainer button img {
+    width: 20px;
+    height: 20px;
+    margin: 0 20px 0 0;
 }
 #LoginContainer button:hover {
     border: 2px solid #EDEDEE;
