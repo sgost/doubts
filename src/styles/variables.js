@@ -1,6 +1,6 @@
 // fonts
-export const FONT_FAMILY = 'DM Sans, sans-serif'
-export const CONTENT_FONT_FAMILY = 'DM Sans, sans-serif'
+export const FONT_FAMILY = 'Mulish, sans-serif'
+export const CONTENT_FONT_FAMILY = 'Mulish, sans-serif'
 
 // colors
 export const WHITE_COLOR = '#FFFFFF';
