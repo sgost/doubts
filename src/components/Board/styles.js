@@ -14,7 +14,7 @@ export const BoardContainer = styled.div`
 }
 
 #BoardContainer #side_menu h1 {
-    font-size: 1.44927536231884vw;
+    font-size: 1.4vw;
     color: #A4A6B3;
     opacity: 0.7;
     display: flex;
@@ -77,9 +77,9 @@ export const BoardContainer = styled.div`
 
 
 #BoardContainer #main_menu {
-    background: white;
     width: 84%;
     height: 100%;
+    overflow: hidden;
     padding: 2.17391304347826vw 2.39130434782609vw;
 }
 
@@ -301,5 +301,187 @@ export const BoardContainer = styled.div`
 #BoardContainer #main_menu #message #message_block2 #task_container .delete_icon:hover {
     color: red;
     cursor: pointer;
+}
+
+
+
+
+
+
+
+#BoardContainer #admin {
+    background: #FFFFFF;
+border-radius: 12px;
+padding: 39px 14px;
+}
+#BoardContainer #admin #admin_block1{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+#BoardContainer #admin #admin_block1 h1{
+    font-weight: 700;
+font-size: 22px;
+color: #252733;
+}
+#BoardContainer #admin #admin_block1 #share {
+    display: flex;
+    align-items: center;
+    font-weight: 600;
+font-size: 16px;
+color: #4B506D;
+cursor: pointer;
+}
+#BoardContainer #admin #admin_block1 p img{
+    width: 18px;
+    height: 18px;
+    margin: 0 6px 0 0;
+}
+#BoardContainer #admin #admin_tab {
+border-bottom: 1px solid #aaaaaa7a;
+display: grid;
+grid-template-columns: 94px 94px 94px;
+gap: 94px;
+margin: 32px 0 0 0;
+}
+#BoardContainer #admin #admin_tab h2 {
+    font-weight: 500;
+font-size: 18px;
+color: #252733;
+margin: 0 0 16px 0;
+text-align: center;
+cursor: pointer;
+position: relative;
+transition: 0.5s ease-in-out;
+}
+#BoardContainer #admin #admin_tab h2:hover {
+    color: #3751FF;;
+}
+#BoardContainer #admin #admin_tab h2:hover:before {
+    content: '';
+    width: 100%;
+    height: 5px;
+    position: absolute;
+    background: #3751FF;
+    left: 0;
+    bottom: -18px;
+    border-radius: 30px 30px 0 0;
+    transition: 0.5s ease-in-out;
+}
+#BoardContainer #admin #message #message_block1 {
+    display: grid;
+    grid-template-columns: 5vw 12vw 13.4vw 10vw 17vw 17vw;
+    grid-template-rows: 2.89vw;
+    grid-gap: 0.57vw;
+    margin: 2.17vw 0 0 0;
+}
+
+#BoardContainer #admin #message #message_block1 h3 {
+    font-size: 1.15vw;
+    font-style: normal;
+    font-weight: 600;
+    color: #252733;
+    padding: 0 0.72vw;
+    background: #F2F3F7;
+    border-radius: 0.28vw;
+    display: flex;
+    align-items: center;
+}
+#BoardContainer #admin #message #message_block2 {
+    width: 100%;
+    height: 23vw;
+    overflow: scroll;
+    overflow-x: hidden;
+}
+
+#BoardContainer #admin #message #message_block2::-webkit-scrollbar {
+    width: 0;
+}
+
+#BoardContainer #admin #message:hover #message_block2::-webkit-scrollbar {
+    width: 0.36vw;
+}
+
+/* Track */
+#BoardContainer #admin #message #message_block2::-webkit-scrollbar-track {
+    background: none;
+}
+
+/* Handle */
+#BoardContainer #admin #message #message_block2::-webkit-scrollbar-thumb {
+    background: #F2F3F7;
+}
+
+/* Handle on hover */
+#BoardContainer #admin #message #message_block2::-webkit-scrollbar-thumb:hover {
+    background: #363740;
+}
+
+#BoardContainer #admin #message #message_block2 #task_container {
+    display: grid;
+    grid-template-columns: 5vw 12vw 13.4vw 10vw 18vw 18vw;
+    grid-template-rows: 2.89vw;
+    grid-gap: 0.57vw;
+    border-bottom: 0.07vw solid #EDEDEE;
+    padding: 0.72vw 0;
+    cursor: pointer;
+    transition: 0.5s ease-in-out;
+    padding: 1vw 0;
+}
+
+#BoardContainer #admin #message #message_block2 #task_container:hover {
+    border-bottom: 0.144vw solid #EDEDEE;
+}
+#BoardContainer #admin #message #message_block2 #task_container p {
+    font-size: 1.1vw;
+}
+#BoardContainer #admin #message #message_block2 #task_container #profile_box {
+    display: flex;
+}
+#BoardContainer #admin #message #message_block2 #task_container #profile_box #profile_text {
+    display: flex;
+    flex-direction: column;
+}
+#BoardContainer #admin #message #message_block2 #task_container #profile_box #profile_text h2 {
+    font-weight: 600;
+font-size: 16px;
+color: #252733;
+}
+#BoardContainer #admin #message #message_block2 #task_container #profile_box #profile_text p {
+    font-weight: 600;
+font-size: 10px;
+color: #252733;
+opacity: 0.5;
+padding: 0;
+line-height: 0.5;
+}
+#BoardContainer #admin #message #message_block2 #task_container #profile_box img {
+    width: 3.18840579710145vw;
+    height: 3.18840579710145vw;
+    margin: 0 8px 0 0;
+    border-radius: 2.17391304347826vw;
+    border: 0.144927536231884vw solid #C4C4C4;
+}
+#BoardContainer #admin #message #message_block2 #task_container #btns {
+    width:  fit-content;
+    margin: 0 0 0 1.5vw;
+}
+#BoardContainer #admin #message #message_block2 #task_container #btns button {
+    width: 100px;
+    height: 40px;
+    background: #3751FF;
+border-radius: 8px;
+font-weight: 700;
+font-size: 14px;
+color: #FFFFFF;
+border: none;
+outline: none;
+cursor: pointer;
+}
+#BoardContainer #admin #message #message_block2 #task_container #btns button:nth-child(2) {
+    background: transparent;
+    color: #FF0000;
+border: none;
+outline: none;
 }
 `
