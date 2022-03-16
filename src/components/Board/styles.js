@@ -59,7 +59,7 @@ export const BoardContainer = styled.div`
     display: none;
 }
 
-#BoardContainer #side_menu ul li:hover {
+#BoardContainer #side_menu ul .active {
     color: #DDE2FF;
     background: #9fa2b43d;
     border-left: 0.217391304347826vw solid white;
@@ -311,8 +311,8 @@ export const BoardContainer = styled.div`
 
 #BoardContainer #admin {
     background: #FFFFFF;
-border-radius: 12px;
-padding: 39px 14px;
+border-radius: 0.86vw;
+padding: 2.82vw 1.01vw;
 }
 #BoardContainer #admin #admin_block1{
     display: flex;
@@ -321,34 +321,34 @@ padding: 39px 14px;
 }
 #BoardContainer #admin #admin_block1 h1{
     font-weight: 700;
-font-size: 22px;
+font-size: 1.59vw;
 color: #252733;
 }
 #BoardContainer #admin #admin_block1 #share {
     display: flex;
     align-items: center;
     font-weight: 600;
-font-size: 16px;
+font-size: 1.15vw;
 color: #4B506D;
 cursor: pointer;
 }
 #BoardContainer #admin #admin_block1 p img{
-    width: 18px;
-    height: 18px;
-    margin: 0 6px 0 0;
+    width: 1.30vw;
+    height: 1.30vw;
+    margin: 0 0.43vw 0 0;
 }
 #BoardContainer #admin #admin_tab {
-border-bottom: 1px solid #aaaaaa7a;
+border-bottom: 0.07vw solid #aaaaaa7a;
 display: grid;
-grid-template-columns: 94px 94px 94px;
-gap: 94px;
-margin: 32px 0 0 0;
+grid-template-columns: 6.81vw 6.81vw 6.81vw;
+gap: 6.81vw;
+margin: 2.31vw 0 0 0;
 }
 #BoardContainer #admin #admin_tab h2 {
     font-weight: 500;
-font-size: 18px;
+font-size: 1.30vw;
 color: #252733;
-margin: 0 0 16px 0;
+margin: 0 0 1.15vw 0;
 text-align: center;
 cursor: pointer;
 position: relative;
@@ -360,12 +360,12 @@ transition: 0.5s ease-in-out;
 #BoardContainer #admin #admin_tab h2:hover:before {
     content: '';
     width: 100%;
-    height: 5px;
+    height: 0.3vw;
     position: absolute;
     background: #3751FF;
     left: 0;
-    bottom: -18px;
-    border-radius: 30px 30px 0 0;
+    bottom: -1.30vw;
+    border-radius: 2.17vw 2.17vw 0 0;
     transition: 0.5s ease-in-out;
 }
 #BoardContainer #admin #message #message_block1 {
@@ -444,12 +444,12 @@ transition: 0.5s ease-in-out;
 }
 #BoardContainer #admin #message #message_block2 #task_container #profile_box #profile_text h2 {
     font-weight: 600;
-font-size: 16px;
+font-size: 1.15vw;
 color: #252733;
 }
 #BoardContainer #admin #message #message_block2 #task_container #profile_box #profile_text p {
     font-weight: 600;
-font-size: 10px;
+font-size: 0.72vw;
 color: #252733;
 opacity: 0.5;
 padding: 0;
@@ -458,7 +458,7 @@ line-height: 0.5;
 #BoardContainer #admin #message #message_block2 #task_container #profile_box img {
     width: 3.18840579710145vw;
     height: 3.18840579710145vw;
-    margin: 0 8px 0 0;
+    margin: 0 0.57vw 0 0;
     border-radius: 2.17391304347826vw;
     border: 0.144927536231884vw solid #C4C4C4;
 }
@@ -467,12 +467,12 @@ line-height: 0.5;
     margin: 0 0 0 1.5vw;
 }
 #BoardContainer #admin #message #message_block2 #task_container #btns button {
-    width: 100px;
-    height: 40px;
+    width: 7.2vw;
+    height: 2.8vw;
     background: #3751FF;
-border-radius: 8px;
+border-radius: 0.57vw;
 font-weight: 700;
-font-size: 14px;
+font-size: 1.01vw;
 color: #FFFFFF;
 border: none;
 outline: none;

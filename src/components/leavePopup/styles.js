@@ -22,14 +22,21 @@ export const PopupContainer = styled.div`
     align-items: center;
     position: relative;
     width: 100%;
-    height: 111px;
+    height: 88px;
     background: #FFFFFF;
     border: 1px solid #F9F9F9;
     box-sizing: border-box;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.05);
     margin: 8px 0 0 0;
     overflow: hidden;
-    padding: 31px 32px;
+    padding: 0 32px;
+}
+#popup #name_block p {
+    font-size: 16px;
+}
+#popup #name_block:nth-child(5) {
+    height: 134px;
+    padding: 31px 32px 0 31px;
 }
 
 #popup #name_block span {
@@ -54,6 +61,7 @@ export const PopupContainer = styled.div`
     height: 100%;
     border: none;
     outline: none;
+    font-size: 16px;
 }
 
 #popup #name_block #textarea {
@@ -62,6 +70,7 @@ export const PopupContainer = styled.div`
     border: none;
     outline: none;
     resize: none;
+    font-size: 16px;
 }
 
 #popup #buttons {

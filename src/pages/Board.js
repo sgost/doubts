@@ -18,6 +18,9 @@ import share from '../data/assets/share.svg';
 const Board = () => {
 
     const [popup, setPopup] = useState(false)
+    const [sideToggle, setSideToggle] = useState(1)
+
+    console.log(sideToggle)
 
     return (
         <BoardContainer>
@@ -25,18 +28,18 @@ const Board = () => {
                 <div id="side_menu">
                     <h1><img src={login_logo} alt="img" />Leave Tracker</h1>
                     <ul>
-                        <li><img src={overview} alt="img" id="img1" /><img src={overview2} alt="img" id="img2" />Home</li>
-                        <li><img src={Calendar} alt="img" id="img1" /><img src={Calendar2} alt="img" id="img2" />Calendar</li>
+                        <li className={sideToggle === 1 ? "active" : ""} onClick={() => setSideToggle(1)}><img src={sideToggle === 1 ? overview2 : overview} alt="img" />Home</li>
+                        <li className={sideToggle === 3 ? "active" : ""} onClick={() => setSideToggle(3)}><img src={sideToggle === 3 ? Calendar2 : Calendar} alt="img" />Calendar</li>
                     </ul>
                     <ul>
-                        <li><img src={settings} alt="img" id="img1" /><img src={settings2} alt="img" id="img2" />Settings</li>
+                        <li className={sideToggle === 2 ? "active" : ""} onClick={() => setSideToggle(2)}><img src={sideToggle === 2 ? settings2 : settings} alt="img" />Settings</li>
                     </ul>
                 </div>
-                <div id="main_menu" style={{ background: '#FCFAFA' }}>
+                <div id="main_menu" style={{ background: sideToggle === 1 ? 'white' : '#FCFAFA' }}>
                     <div id="header">
-                        <h2 id="title">Home</h2>
+                        <h2 id="title">{sideToggle === 1 ? "Home" : sideToggle === 2 ? "Settings" : sideToggle === 3 ? "Calendar" : ""}</h2>
                         <div id="mini_block">
-                            <button onClick={() => setPopup(true)}>Apply Leave</button>
+                            {sideToggle === 1 ? <button onClick={() => setPopup(true)}>Apply Leave</button> : ""}
                             <img src={search} alt="img" id="search" />
                             <Popover placement="bottomRight" content={<Notification />} style={{ position: 'relative' }}>
                                 <img src={notificaton} alt="img" id="notificaton" />
@@ -49,116 +52,222 @@ const Board = () => {
                         </div>
                     </div>
 
-
-
-                    <div id="admin">
-                        <div id="admin_block1">
-                            <h1>Leave Requests</h1>
-                            <p id="share"><img src={share} alt="share" />Share</p>
-                        </div>
-                        <div id="admin_tab">
-                            <h2>All</h2>
-                            <h2>Approve</h2>
-                            <h2>Pending</h2>
-                        </div>
-                        <div id="message">
-                            <div id="message_block1">
-                                <h3>SNo</h3>
-                                <h3>Name & ID</h3>
-                                <h3>Date</h3>
-                                <h3>Leave Type</h3>
-                                <h3>Reason</h3>
-                                <h3>Action</h3>
+                    {sideToggle === 1 ?
+                        <>
+                            <div id="score">
+                                <div id="score_card">
+                                    <h2 id="score">16</h2>
+                                    <p>Available Leaves</p>
+                                </div>
+                                <div id="score_card">
+                                    <h2 id="score">08</h2>
+                                    <p>Previous unused Leaves</p>
+                                </div>
+                                <div id="score_card">
+                                    <h2 id="score">02</h2>
+                                    <p>Pending Leaves Requests</p>
+                                </div>
+                                <div id="score_card">
+                                    <h2 id="score">02</h2>
+                                    <p>Rejected Leaves</p>
+                                </div>
                             </div>
-                            <div id="message_block2">
-                                <div id="task_container">
-                                    <p>1</p>
-                                    <div id="profile_box">
-                                        <img src="https://i.pinimg.com/550x/4b/0e/d9/4b0ed906554fb9f66b1afabea90eb822.jpg" alt="img" id="profile" />
-                                        <div id="profile_text">
-                                            <h2>Vignesh</h2>
-                                            <p>FCHN017</p>
-                                        </div>
-                                    </div>
-                                    <p>25 Feb to 26 Feb, 2022</p>
-                                    <p>CL</p>
-                                    <p>Friend’s wedding celebration</p>
-                                    <div id="btns">
-                                        <button>Approve</button>
-                                        <button>Reject</button>
-                                    </div>
+
+                            <div id="message">
+                                <div id="message_block1">
+                                    <h3>SNo</h3>
+                                    <h3>Type</h3>
+                                    <h3>From</h3>
+                                    <h3>To</h3>
+                                    <h3>Reason</h3>
+                                    <h3>Status</h3>
+                                    <h3>Action</h3>
                                 </div>
-                                <div id="task_container">
-                                    <p>1</p>
-                                    <div id="profile_box">
-                                        <img src="https://i.pinimg.com/550x/4b/0e/d9/4b0ed906554fb9f66b1afabea90eb822.jpg" alt="img" id="profile" />
-                                        <div id="profile_text">
-                                            <h2>Vignesh</h2>
-                                            <p>FCHN017</p>
-                                        </div>
+                                <div id="message_block2">
+                                    <div id="task_container">
+                                        <p>1</p>
+                                        <p>Casual</p>
+                                        <p>25 Feb 2022 - 9:00 AM</p>
+                                        <p>25 Feb 2022 - 6:00 PM</p>
+                                        <p>Friend’s wedding celebration</p>
+                                        <p style={{ color: '#CB5A08', fontWeight: '600' }}>Pending</p>
+                                        <p><DeleteOutlined className='delete_icon' /></p>
                                     </div>
-                                    <p>25 Feb to 26 Feb, 2022</p>
-                                    <p>CL</p>
-                                    <p>Friend’s wedding celebration</p>
-                                    <div id="btns">
-                                        <button>Approve</button>
-                                        <button>Reject</button>
+                                    <div id="task_container">
+                                        <p>1</p>
+                                        <p>Casual</p>
+                                        <p>25 Feb 2022 - 9:00 AM</p>
+                                        <p>25 Feb 2022 - 6:00 PM</p>
+                                        <p>Friend’s wedding celebration</p>
+                                        <p style={{ color: '#FF0000', fontWeight: '600' }}>Rejected</p>
+                                        <p><DeleteOutlined className='delete_icon' /></p>
                                     </div>
-                                </div>
-                                <div id="task_container">
-                                    <p>1</p>
-                                    <div id="profile_box">
-                                        <img src="https://i.pinimg.com/550x/4b/0e/d9/4b0ed906554fb9f66b1afabea90eb822.jpg" alt="img" id="profile" />
-                                        <div id="profile_text">
-                                            <h2>Vignesh</h2>
-                                            <p>FCHN017</p>
-                                        </div>
+                                    <div id="task_container">
+                                        <p>1</p>
+                                        <p>Casual</p>
+                                        <p>25 Feb 2022 - 9:00 AM</p>
+                                        <p>25 Feb 2022 - 6:00 PM</p>
+                                        <p>Friend’s wedding celebration</p>
+                                        <p style={{ color: '#00D241', fontWeight: '600' }}>Approved</p>
+                                        <p><DeleteOutlined className='delete_icon' /></p>
                                     </div>
-                                    <p>25 Feb to 26 Feb, 2022</p>
-                                    <p>CL</p>
-                                    <p>Friend’s wedding celebration</p>
-                                    <div id="btns">
-                                        <button>Approve</button>
-                                        <button>Reject</button>
+                                    <div id="task_container">
+                                        <p>1</p>
+                                        <p>Casual</p>
+                                        <p>25 Feb 2022 - 9:00 AM</p>
+                                        <p>25 Feb 2022 - 6:00 PM</p>
+                                        <p>Friend’s wedding celebration</p>
+                                        <p style={{ color: '#FF0000', fontWeight: '600' }}>Rejected</p>
+                                        <p><DeleteOutlined className='delete_icon' /></p>
                                     </div>
-                                </div>
-                                <div id="task_container">
-                                    <p>1</p>
-                                    <div id="profile_box">
-                                        <img src="https://i.pinimg.com/550x/4b/0e/d9/4b0ed906554fb9f66b1afabea90eb822.jpg" alt="img" id="profile" />
-                                        <div id="profile_text">
-                                            <h2>Vignesh</h2>
-                                            <p>FCHN017</p>
-                                        </div>
+                                    <div id="task_container">
+                                        <p>1</p>
+                                        <p>Casual</p>
+                                        <p>25 Feb 2022 - 9:00 AM</p>
+                                        <p>25 Feb 2022 - 6:00 PM</p>
+                                        <p>Friend’s wedding celebration</p>
+                                        <p style={{ color: '#CB5A08', fontWeight: '600' }}>Pending</p>
+                                        <p><DeleteOutlined className='delete_icon' /></p>
                                     </div>
-                                    <p>25 Feb to 26 Feb, 2022</p>
-                                    <p>CL</p>
-                                    <p>Friend’s wedding celebration</p>
-                                    <div id="btns">
-                                        <button>Approve</button>
-                                        <button>Reject</button>
+                                    <div id="task_container">
+                                        <p>1</p>
+                                        <p>Casual</p>
+                                        <p>25 Feb 2022 - 9:00 AM</p>
+                                        <p>25 Feb 2022 - 6:00 PM</p>
+                                        <p>Friend’s wedding celebration</p>
+                                        <p style={{ color: '#CB5A08', fontWeight: '600' }}>Pending</p>
+                                        <p><DeleteOutlined className='delete_icon' /></p>
                                     </div>
-                                </div>
-                                <div id="task_container">
-                                    <p>1</p>
-                                    <div id="profile_box">
-                                        <img src="https://i.pinimg.com/550x/4b/0e/d9/4b0ed906554fb9f66b1afabea90eb822.jpg" alt="img" id="profile" />
-                                        <div id="profile_text">
-                                            <h2>Vignesh</h2>
-                                            <p>FCHN017</p>
-                                        </div>
-                                    </div>
-                                    <p>25 Feb to 26 Feb, 2022</p>
-                                    <p>CL</p>
-                                    <p>Friend’s wedding celebration</p>
-                                    <div id="btns">
-                                        <button>Approve</button>
-                                        <button>Reject</button>
+                                    <div id="task_container">
+                                        <p>1</p>
+                                        <p>Casual</p>
+                                        <p>25 Feb 2022 - 9:00 AM</p>
+                                        <p>25 Feb 2022 - 6:00 PM</p>
+                                        <p>Friend’s wedding celebration</p>
+                                        <p style={{ color: '#CB5A08', fontWeight: '600' }}>Pending</p>
+                                        <p><DeleteOutlined className='delete_icon' /></p>
                                     </div>
                                 </div>
                             </div>
+                        </>
+                        :
+                        ""
+                    }
+
+
+                    {sideToggle === 2 ?
+                        <div id="admin">
+                            <div id="admin_block1">
+                                <h1>Leave Requests</h1>
+                                <p id="share"><img src={share} alt="share" />Share</p>
+                            </div>
+                            <div id="admin_tab">
+                                <h2>All</h2>
+                                <h2>Approve</h2>
+                                <h2>Pending</h2>
+                            </div>
+                            <div id="message">
+                                <div id="message_block1">
+                                    <h3>SNo</h3>
+                                    <h3>Name & ID</h3>
+                                    <h3>Date</h3>
+                                    <h3>Leave Type</h3>
+                                    <h3>Reason</h3>
+                                    <h3>Action</h3>
+                                </div>
+                                <div id="message_block2">
+                                    <div id="task_container">
+                                        <p>1</p>
+                                        <div id="profile_box">
+                                            <img src="https://i.pinimg.com/550x/4b/0e/d9/4b0ed906554fb9f66b1afabea90eb822.jpg" alt="img" id="profile" />
+                                            <div id="profile_text">
+                                                <h2>Vignesh</h2>
+                                                <p>FCHN017</p>
+                                            </div>
+                                        </div>
+                                        <p>25 Feb to 26 Feb, 2022</p>
+                                        <p>CL</p>
+                                        <p>Friend’s wedding celebration</p>
+                                        <div id="btns">
+                                            <button>Approve</button>
+                                            <button>Reject</button>
+                                        </div>
+                                    </div>
+                                    <div id="task_container">
+                                        <p>1</p>
+                                        <div id="profile_box">
+                                            <img src="https://i.pinimg.com/550x/4b/0e/d9/4b0ed906554fb9f66b1afabea90eb822.jpg" alt="img" id="profile" />
+                                            <div id="profile_text">
+                                                <h2>Vignesh</h2>
+                                                <p>FCHN017</p>
+                                            </div>
+                                        </div>
+                                        <p>25 Feb to 26 Feb, 2022</p>
+                                        <p>CL</p>
+                                        <p>Friend’s wedding celebration</p>
+                                        <div id="btns">
+                                            <button>Approve</button>
+                                            <button>Reject</button>
+                                        </div>
+                                    </div>
+                                    <div id="task_container">
+                                        <p>1</p>
+                                        <div id="profile_box">
+                                            <img src="https://i.pinimg.com/550x/4b/0e/d9/4b0ed906554fb9f66b1afabea90eb822.jpg" alt="img" id="profile" />
+                                            <div id="profile_text">
+                                                <h2>Vignesh</h2>
+                                                <p>FCHN017</p>
+                                            </div>
+                                        </div>
+                                        <p>25 Feb to 26 Feb, 2022</p>
+                                        <p>CL</p>
+                                        <p>Friend’s wedding celebration</p>
+                                        <div id="btns">
+                                            <button>Approve</button>
+                                            <button>Reject</button>
+                                        </div>
+                                    </div>
+                                    <div id="task_container">
+                                        <p>1</p>
+                                        <div id="profile_box">
+                                            <img src="https://i.pinimg.com/550x/4b/0e/d9/4b0ed906554fb9f66b1afabea90eb822.jpg" alt="img" id="profile" />
+                                            <div id="profile_text">
+                                                <h2>Vignesh</h2>
+                                                <p>FCHN017</p>
+                                            </div>
+                                        </div>
+                                        <p>25 Feb to 26 Feb, 2022</p>
+                                        <p>CL</p>
+                                        <p>Friend’s wedding celebration</p>
+                                        <div id="btns">
+                                            <button>Approve</button>
+                                            <button>Reject</button>
+                                        </div>
+                                    </div>
+                                    <div id="task_container">
+                                        <p>1</p>
+                                        <div id="profile_box">
+                                            <img src="https://i.pinimg.com/550x/4b/0e/d9/4b0ed906554fb9f66b1afabea90eb822.jpg" alt="img" id="profile" />
+                                            <div id="profile_text">
+                                                <h2>Vignesh</h2>
+                                                <p>FCHN017</p>
+                                            </div>
+                                        </div>
+                                        <p>25 Feb to 26 Feb, 2022</p>
+                                        <p>CL</p>
+                                        <p>Friend’s wedding celebration</p>
+                                        <div id="btns">
+                                            <button>Approve</button>
+                                            <button>Reject</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                    </div>
+                        :
+                        ""}
+
+
                 </div>
 
             </div>
