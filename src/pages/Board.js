@@ -33,7 +33,7 @@ const Board = () => {
                 </div>
                 <div id="main_menu">
                     <div id="header">
-                        <h2>Home</h2>
+                        <h2 id="title">Home</h2>
                         <div id="mini_block">
                             <button onClick={() => setPopup(true)}>Apply Leave</button>
                             <img src={search} alt="img" id="search" />
