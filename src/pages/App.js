@@ -1,30 +1,18 @@
-import React, { createContext, useState } from 'react';
-import ComponentA from "./ComponentA"
+import React from 'react';
+import { connect } from 'react-redux';
+import { IncAction, DecAction } from './actions';
 
-const FirstName = createContext();
-
-const App = () => {
-
-    const [data, setData] = useState([
-        {
-            brandname: "Nokia"
-        },
-        {
-            brandname: "realme"
-        },
-        {
-            brandname: "mi"
-        }
-    ]);
-
-
+const App = ({ local_variable, IncAction, DecAction }) => {
 
     return (
-        <FirstName.Provider value={[data, setData]}>
-            <ComponentA />
-        </FirstName.Provider>
+        <center>
+            <h1>{local_variable}</h1>
+            <button onClick={() => IncAction(100)}>Inc</button>
+            <button onClick={DecAction}>Dec</button>
+        </center>
     );
 }
-
-export default App;
-export { FirstName };
+const mapStateToProps = state => ({
+    local_variable: state
+})
+export default connect(mapStateToProps, { IncAction, DecAction })(App);
