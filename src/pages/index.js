@@ -1,15 +1,28 @@
-import React, { Fragment } from "react"
-import App from "./App"
-import store from "./store"
-import { Provider } from "react-redux"
-import SEO from "../components/seo"
+import React, { Fragment, useState, useCallback } from "react"
 
 const IndexPage = () => {
+
+  //useRef
+  const refCont = React.useRef("");
+
+  console.log(refCont.current.value)
+  ///////////////////////////////////////////////////////////
+  const [count, setCount] = useState(0);
+  //useCallback
+  useCallback(() => {
+    alert('useCallback')
+    fun();
+  }, [count])
+
+  const fun = () => {
+    alert('fun')
+  }
+
+  const ob = { a: 1, b: 2 };
   return (
     <Fragment>
-      <Provider store={store}>
-        <App />
-      </Provider>
+      <input type="text" ref={refCont} />
+      <button onClick={() => setCount(count + 1)}>click</button>
     </Fragment>
   )
 }
