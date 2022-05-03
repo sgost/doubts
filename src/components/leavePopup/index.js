@@ -1,11 +1,23 @@
-import React from 'react';
+import React, { useState, useCallback } from 'react';
 import { PopupContainer } from './styles';
 import user from '../../data/assets/user.svg';
 import leave_type from '../../data/assets/leave_type.svg';
 import cal from '../../data/assets/pop_Calendar.svg';
 import Edit from '../../data/assets/Edit.svg';
+import { DatePicker, Radio, Space } from 'antd';
+import moment from "moment"
+
 
 const SideModal = () => {
+
+    const [size, setSize] = useState(moment().format("MMM Do YY"));
+
+
+    const onChange = (date) => {
+        setSize(date.format("MMM Do YY"))
+    }
+
+
     return (
         <PopupContainer>
             <div id="popup">
@@ -16,7 +28,7 @@ const SideModal = () => {
                 </div>
                 <div id="name_block">
                     <img src={cal} alt="img" />
-                    <p>Feb25, 2022<span></span>Full day</p>
+                    <p><DatePicker onChange={onChange} />{size}<span></span>Full day</p>
                 </div>
                 <div id="name_block">
                     <img src={leave_type} alt="img" />

@@ -31,8 +31,11 @@ export const PopupContainer = styled.div`
     overflow: hidden;
     padding: 0 32px;
 }
-#popup #name_block p {
-    font-size: 16px;
+#popup #name_block p .ant-picker {
+    opacity: 0 !important;
+    position: absolute;
+    cursor: pointer;
+    width: 90px !important;
 }
 #popup #name_block:nth-child(5) {
     height: 134px;
