@@ -240,6 +240,16 @@ export const BoardContainer = styled.div`
     overflow-x: hidden;
 }
 
+#BoardContainer #main_menu #message #message_blocks {
+    width: 100%;
+    height: 23vw;
+    overflow: scroll;
+    overflow-x: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 #BoardContainer #main_menu #message #message_block2::-webkit-scrollbar {
     width: 0;
 }
@@ -289,6 +299,7 @@ export const BoardContainer = styled.div`
     font-weight: 600;
     font-size: 1.15vw;
     color: #252733;
+    overflow: hidden;
 }
 
 #BoardContainer #main_menu #message #message_block2 #task_container p:nth-child(7) {

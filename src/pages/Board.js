@@ -22,6 +22,9 @@ const Board = () => {
 
     console.log(sideToggle)
 
+    const getData = JSON.parse(localStorage.getItem("leave_records"))
+
+
     return (
         <BoardContainer>
             <div id="BoardContainer" >
@@ -56,7 +59,7 @@ const Board = () => {
                         <>
                             <div id="score">
                                 <div id="score_card">
-                                    <h2 id="score">16</h2>
+                                    <h2 id="score">{16 - getData.length}</h2>
                                     <p>Available Leaves</p>
                                 </div>
                                 <div id="score_card">
@@ -64,7 +67,7 @@ const Board = () => {
                                     <p>Previous unused Leaves</p>
                                 </div>
                                 <div id="score_card">
-                                    <h2 id="score">02</h2>
+                                    <h2 id="score">0{getData.length}</h2>
                                     <p>Pending Leaves Requests</p>
                                 </div>
                                 <div id="score_card">
@@ -83,71 +86,26 @@ const Board = () => {
                                     <h3>Status</h3>
                                     <h3>Action</h3>
                                 </div>
-                                <div id="message_block2">
-                                    <div id="task_container">
-                                        <p>1</p>
-                                        <p>Casual</p>
-                                        <p>25 Feb 2022 - 9:00 AM</p>
-                                        <p>25 Feb 2022 - 6:00 PM</p>
-                                        <p>Friend’s wedding celebration</p>
-                                        <p style={{ color: '#CB5A08', fontWeight: '600' }}>Pending</p>
-                                        <p><DeleteOutlined className='delete_icon' /></p>
+                                {getData ?
+                                    <div id="message_block2">
+                                        {getData.map((item, i) =>
+                                            <div id="task_container" key={i}>
+                                                <p>{i + 1}</p>
+                                                <p>{item.leaveType}</p>
+                                                <p>{item.from}</p>
+                                                <p>{item.to}</p>
+                                                <p>{item.reason}</p>
+                                                <p style={{ color: '#CB5A08', fontWeight: '600' }}>Pending</p>
+                                                <p><DeleteOutlined className='delete_icon' /></p>
+                                            </div>
+                                        )}
+
                                     </div>
-                                    <div id="task_container">
-                                        <p>1</p>
-                                        <p>Casual</p>
-                                        <p>25 Feb 2022 - 9:00 AM</p>
-                                        <p>25 Feb 2022 - 6:00 PM</p>
-                                        <p>Friend’s wedding celebration</p>
-                                        <p style={{ color: '#FF0000', fontWeight: '600' }}>Rejected</p>
-                                        <p><DeleteOutlined className='delete_icon' /></p>
+                                    :
+                                    <div id="message_blocks">
+                                        <p>No Leaves Applied</p>
                                     </div>
-                                    <div id="task_container">
-                                        <p>1</p>
-                                        <p>Casual</p>
-                                        <p>25 Feb 2022 - 9:00 AM</p>
-                                        <p>25 Feb 2022 - 6:00 PM</p>
-                                        <p>Friend’s wedding celebration</p>
-                                        <p style={{ color: '#00D241', fontWeight: '600' }}>Approved</p>
-                                        <p><DeleteOutlined className='delete_icon' /></p>
-                                    </div>
-                                    <div id="task_container">
-                                        <p>1</p>
-                                        <p>Casual</p>
-                                        <p>25 Feb 2022 - 9:00 AM</p>
-                                        <p>25 Feb 2022 - 6:00 PM</p>
-                                        <p>Friend’s wedding celebration</p>
-                                        <p style={{ color: '#FF0000', fontWeight: '600' }}>Rejected</p>
-                                        <p><DeleteOutlined className='delete_icon' /></p>
-                                    </div>
-                                    <div id="task_container">
-                                        <p>1</p>
-                                        <p>Casual</p>
-                                        <p>25 Feb 2022 - 9:00 AM</p>
-                                        <p>25 Feb 2022 - 6:00 PM</p>
-                                        <p>Friend’s wedding celebration</p>
-                                        <p style={{ color: '#CB5A08', fontWeight: '600' }}>Pending</p>
-                                        <p><DeleteOutlined className='delete_icon' /></p>
-                                    </div>
-                                    <div id="task_container">
-                                        <p>1</p>
-                                        <p>Casual</p>
-                                        <p>25 Feb 2022 - 9:00 AM</p>
-                                        <p>25 Feb 2022 - 6:00 PM</p>
-                                        <p>Friend’s wedding celebration</p>
-                                        <p style={{ color: '#CB5A08', fontWeight: '600' }}>Pending</p>
-                                        <p><DeleteOutlined className='delete_icon' /></p>
-                                    </div>
-                                    <div id="task_container">
-                                        <p>1</p>
-                                        <p>Casual</p>
-                                        <p>25 Feb 2022 - 9:00 AM</p>
-                                        <p>25 Feb 2022 - 6:00 PM</p>
-                                        <p>Friend’s wedding celebration</p>
-                                        <p style={{ color: '#CB5A08', fontWeight: '600' }}>Pending</p>
-                                        <p><DeleteOutlined className='delete_icon' /></p>
-                                    </div>
-                                </div>
+                                }
                             </div>
                         </>
                         :
@@ -283,7 +241,7 @@ const Board = () => {
                 style={{ backgroundColor: `transparent`, height: `100%` }}
                 maskStyle={{ backgroundColor: `transparent`, height: `fit-content`, padding: `0` }}
             >
-                <SideModal />
+                <SideModal setPopup={setPopup} />
             </Modal>
         </BoardContainer>
     )
