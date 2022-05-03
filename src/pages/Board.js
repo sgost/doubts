@@ -22,7 +22,9 @@ const Board = () => {
 
     console.log(sideToggle)
 
-    const getData = JSON.parse(localStorage.getItem("leave_records"))
+    var datam = localStorage.getItem("leave_records")
+
+    const getDatas = JSON.parse(datam)
 
 
     return (
@@ -59,7 +61,7 @@ const Board = () => {
                         <>
                             <div id="score">
                                 <div id="score_card">
-                                    <h2 id="score">{16 - getData.length}</h2>
+                                    <h2 id="score">{16 - getDatas.length}</h2>
                                     <p>Available Leaves</p>
                                 </div>
                                 <div id="score_card">
@@ -67,7 +69,7 @@ const Board = () => {
                                     <p>Previous unused Leaves</p>
                                 </div>
                                 <div id="score_card">
-                                    <h2 id="score">0{getData.length}</h2>
+                                    <h2 id="score">0{getDatas.length}</h2>
                                     <p>Pending Leaves Requests</p>
                                 </div>
                                 <div id="score_card">
@@ -86,9 +88,9 @@ const Board = () => {
                                     <h3>Status</h3>
                                     <h3>Action</h3>
                                 </div>
-                                {getData ?
+                                {getDatas ?
                                     <div id="message_block2">
-                                        {getData.map((item, i) =>
+                                        {getDatas.map((item, i) =>
                                             <div id="task_container" key={i}>
                                                 <p>{i + 1}</p>
                                                 <p>{item.leaveType}</p>
