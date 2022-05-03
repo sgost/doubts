@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import login_logo from '../data/assets/login_logo.svg';
 import overview from '../data/assets/overview.svg';
 import overview2 from '../data/assets/overview_hover.svg';
@@ -19,12 +19,15 @@ const Board = () => {
 
     const [popup, setPopup] = useState(false)
     const [sideToggle, setSideToggle] = useState(1)
+    const [getDatas, setGetDatas] = useState('');
 
     console.log(sideToggle)
 
-    var datam = localStorage.getItem("leave_records")
 
-    const getDatas = JSON.parse(datam)
+    useEffect(() => {
+        setGetDatas(JSON.parse(localStorage.getItem("leave_records")))
+    }, [])
+
 
 
     return (
