@@ -21,8 +21,8 @@ const Board = () => {
     const [sideToggle, setSideToggle] = useState(1)
     const [getDatas, setGetDatas] = useState('');
 
-    console.log(sideToggle)
-
+    let userData = JSON.parse(localStorage.getItem('userData'))
+    console.log(userData)
 
     useEffect(() => {
         setGetDatas(JSON.parse(localStorage.getItem("leave_records")))
@@ -54,8 +54,8 @@ const Board = () => {
                             </Popover>
 
                             <div id="mini_block_name">
-                                <p>Vignesh</p>
-                                <img src="https://i.pinimg.com/550x/4b/0e/d9/4b0ed906554fb9f66b1afabea90eb822.jpg" alt="img" id="profile" />
+                                <p>{userData.user.displayName}</p>
+                                <img src={userData.user.photoURL} alt="img" id="profile" />
                             </div>
                         </div>
                     </div>
